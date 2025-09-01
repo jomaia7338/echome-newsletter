@@ -1,0 +1,16 @@
+# Configuration éditoriale minimale
+site_title: "Newsletter Echome Energies — Photovoltaïque"
+brand_color: "#37C3AF"   # turquoise Echome
+text_color: "#1C1C1C"
+blocks:
+  - edito
+  - actu_reglementaire
+  - chiffre_du_mois
+  - cas_concret
+  - conseil_pratique
+  - contact_cta
+
+links:
+  legifrance_s21: "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000051380903"
+  edf_oa_s21: "https://www.edf-oa.fr/content/contrat-de-type-s21"
+  enedis_raccord: "https://www.enedis.fr/je-raccorde-une-installation-de-production-delectricite"
