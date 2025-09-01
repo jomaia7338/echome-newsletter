@@ -1,0 +1,28 @@
+name: Build newsletter PV
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 7 * * 1"   # lundi 07:00 UTC
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r requirements.txt
+      - name: Générer la newsletter
+        run: python newsletter.py
+      - name: Publier sur GitHub Pages (dossier docs/)
+        run: |
+          touch docs/.nojekyll
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs
+          git commit -m "maj newsletter" || echo "no changes"
+          git push
