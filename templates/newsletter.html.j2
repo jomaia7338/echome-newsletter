@@ -1,1 +1,88 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"/>
+  <title>{{ site_title }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <style>
+    body{font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; margin:0; color: {{ text_color }};}
+    header{background: {{ brand_color }}; color:#fff; padding:28px}
+    h1{margin:0;font-size:26px}
+    .wrap{max-width:820px;margin:0 auto;padding:24px}
+    .card{border:1px solid #e9e9e9;border-radius:16px;padding:18px;margin:16px 0;background:#fff}
+    .cta{display:inline-block;background: {{ brand_color }}; color:#fff;padding:10px 16px;border-radius:10px;text-decoration:none}
+    small{color:#666}
+    footer{padding:24px;color:#666}
+    a{color: {{ brand_color }};}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>{{ site_title }}</h1>
+    <div>Générée automatiquement le {{ now_paris }} (sources officielles)</div>
+  </header>
+
+  <main class="wrap">
+    {% if "edito" in blocks %}
+    <section class="card">
+      <h2>🟢 Édito</h2>
+      <div>{{ edito_html|safe }}</div>
+    </section>
+    {% endif %}
+
+    {% if "actu_reglementaire" in blocks %}
+    <section class="card">
+      <h2>📝 Actu réglementaire</h2>
+      <ul>
+        <li>Arrêté S21 modifié (26/03/2025) : <a href="{{ links.legifrance_s21 }}" target="_blank">lire sur Legifrance</a></li>
+        <li>Fiche synthèse EDF OA : <a href="{{ links.edf_oa_s21 }}" target="_blank">contrat de type S21</a></li>
+      </ul>
+    </section>
+    {% endif %}
+
+    {% if "chiffre_du_mois" in blocks %}
+    <section class="card">
+      <h2>📌 Chiffre du mois</h2>
+      <p style="font-size:20px"><strong>{{ chiffre_mois }}</strong></p>
+      <small>Données CRE (métropole) — dernière MAJ jeu : {{ cre_last_metro or "n.c." }}</small>
+    </section>
+    {% endif %}
+
+    {% if "cas_concret" in blocks %}
+    <section class="card">
+      <h2>🏠 Cas concret (exemple)</h2>
+      <p>Installation 6 kWc en Isère, autoconsommation 50% (hypothèses modifiables). Intégrez ici votre calcul d’économies/ROI.</p>
+    </section>
+    {% endif %}
+
+    {% if "conseil_pratique" in blocks %}
+    <section class="card">
+      <h2>🔧 Conseil pratique</h2>
+      <p>Préparer son raccordement : guide Enedis <a href="{{ links.enedis_raccord }}" target="_blank">voir la page</a>.</p>
+    </section>
+    {% endif %}
+
+    {% if "contact_cta" in blocks %}
+    <section class="card">
+      <h2>📞 Contact & CTA</h2>
+      <p>Echome Energies — Isère / AuRA<br/>contact@echome-energies.fr — 04 xx xx xx xx</p>
+      <a class="cta" href="mailto:contact@echome-energies.fr">Demander un diagnostic gratuit</a>
+    </section>
+    {% endif %}
+
+    <section class="card">
+      <h2>📚 Sources & métadonnées</h2>
+      <ul>
+        <li>CRE Open Data — Métropole (dernière mise à jour jeu : {{ cre_last_metro or "n.c." }})</li>
+        <li>CRE Open Data — ZNI (dernière mise à jour jeu : {{ cre_last_zni or "n.c." }})</li>
+      </ul>
+      <small>Cette page n’aspire pas photovoltaique.info (robots.txt) ; seules les sources primaires sont lues automatiquement.</small>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <div>© Echome Energies — Généré automatiquement. Vérifier avant envoi.</div>
+  </footer>
+</body>
+</html>
 
