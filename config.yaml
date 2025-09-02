@@ -10,6 +10,17 @@ blocks:
   - conseil_pratique
   - contact_cta
 
+blocks:
+  - edito
+  - actu_reglementaire
+  - barometre_cre      # 👈 nouveau
+  - pedagogie_msb      # 👈 nouveau
+  - contact_cta
+
+links:
+  cre_t3_2025: "https://www.cre.fr/Actualites"   # (ou colle l’URL exacte du PDF/actu CRE T3 2025)
+  msb_visual: "msb-visuel.jpg"                   # (on uploadera l’image juste après)
+
 links:
   legifrance_s21: "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000051380903"
   edf_oa_s21: "https://www.edf-oa.fr/content/contrat-de-type-s21"
